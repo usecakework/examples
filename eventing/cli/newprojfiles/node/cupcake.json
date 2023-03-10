@@ -1,0 +1,11 @@
+{
+    "handlers": [
+        {
+            "name": "handleOnSyncStarted",
+            "event": "onSyncStarted",
+            "file": "handlers.js",
+            "method": "handleOnSyncStarted",
+            "runtime": "node"
+        }
+    ]
+}
