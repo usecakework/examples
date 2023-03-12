@@ -60,7 +60,7 @@ app.post('/deploy', async (req, res) => {
       files: [
         {
           dir: ".",
-          name: "sequin.json",
+          name: "config.json",
           content: config
         },
         {
