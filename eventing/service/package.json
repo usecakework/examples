@@ -11,7 +11,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@cakework/client": "^0.0.54",
+    "@cakework/client": "^0.0.56",
     "@types/body-parser": "^1.19.2",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",

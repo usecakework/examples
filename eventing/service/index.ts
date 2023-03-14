@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 import * as bodyParser from "body-parser";
 import * as fs from "fs";
 import cors from "cors";
-import {CakeworkApiClient} from "@cakework/client/dist";
+import {CakeworkApiClient, CakeworkApiEnvironment} from "@cakework/client/dist";
 import {Svix} from "svix";
 
 dotenv.config();
@@ -60,7 +60,7 @@ app.post('/deploy', async (req, res) => {
       files: [
         {
           dir: ".",
-          name: "config.json",
+          name: "cupcake.json",
           content: config
         },
         {
@@ -77,16 +77,22 @@ app.post('/deploy', async (req, res) => {
           dir: ".",
           name: "server.js",
           content: serverfile
-        }
+        },
       ]
     }
 
     // map a handler to an image id
-    const image = await cakework.buildImageFromFiles(request);
-    console.log(image.imageId);
+    const buildId = await cakework.buildImageFromFiles(request);
+    // TODO use our webhook API instead of polling
+    var build = await cakework.getBuild(buildId.buildId);
+    while (build.status != "succeeded") {
+      await new Promise(r => setTimeout(r, 2000));
+      build = await cakework.getBuild(buildId.buildId);
+    }
+
 
     const startVMRequest = {
-      imageId: image.imageId,
+      imageId: build.imageId!,
       cpu: 1,
       memory: 256,
       port: 8080
