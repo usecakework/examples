@@ -1,4 +1,4 @@
-Create a .env file with the following:
+Create a .env file with the following in service folder:
 ```
 CAKEWORK_API_KEY="YOUR_CAKEWORK_API_KEY"
 SVIX_AUTH_TOKEN="YOUR_SVIX_AUTH_TOKEN"
