@@ -83,10 +83,6 @@ func main() {
 					if err != nil {
 						return err
 					}
-					dartfile, err := os.ReadFile("./server.dart")
-					if err != nil {
-						return err
-					}
 
 					type File struct {
 						Content string `json:"content"`
@@ -95,7 +91,6 @@ func main() {
 						Config      File `json:"config"`
 						PackageJson File `json:"package_json"`
 						JsHandlers  File `json:"js_handlers"`
-						Dartfile    File `json:"dartfile"`
 					}
 					reqBody := Body{
 						Config: File{
@@ -106,9 +101,6 @@ func main() {
 						},
 						JsHandlers: File{
 							Content: string(jsHandlers),
-						},
-						Dartfile: File{
-							Content: string(dartfile),
 						},
 					}
 
