@@ -90,7 +90,6 @@ app.post('/deploy', async (req, res) => {
       build = await cakework.getBuild(buildId.buildId);
     }
 
-
     const startVMRequest = {
       imageId: build.imageId!,
       cpu: 1,
