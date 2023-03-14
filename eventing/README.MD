@@ -1,3 +1,9 @@
+Create a .env file with the following:
+```
+CAKEWORK_API_KEY="YOUR_CAKEWORK_API_KEY"
+SVIX_AUTH_TOKEN="YOUR_SVIX_AUTH_TOKEN"
+```
+
 Boot the service, from the `service` directory:
 ```
 npm install
